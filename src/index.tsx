@@ -5,15 +5,14 @@ import App from './App';
 import {Layout} from '../src/layout/Layout';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+    document.getElementById('root') as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    <Layout>
-      <App />
-    </Layout>
-    
-  </React.StrictMode>
+    <React.StrictMode>
+        <Layout>
+            <App />
+        </Layout>
+    </React.StrictMode>
 );
 
 
