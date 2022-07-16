@@ -10,9 +10,9 @@ export const GenerateResults = ({data} : DataProps) => {
             {data.length === 0 ? null
                 :
             <div>
-                {data.map((ele) => {
+                {data.map((ele, index : number) => {
                     return (
-                        <div>
+                        <div key={index}>
                             <PrevCloseCard results={ele} />
                         </div>
                     )
