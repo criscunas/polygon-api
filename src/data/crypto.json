@@ -1,0 +1,204 @@
+
+    [
+        {
+            "ticker": "X:1INCHUSD",
+            "name": "1inch"
+        },
+        {
+            "ticker": "X:AAVEUSD",
+            "name": "Aave"
+        },
+        {
+            "ticker": "X:ACATUSD",
+            "name": "Alphacat"
+        },
+        {
+            "ticker": "X:ACHUSD",
+            "name": "Alchemy Pay"
+        },
+        {
+            "ticker": "X:ACTUSD",
+            "name": "Achain"
+        },
+        {
+            "ticker": "X:ADAUSD",
+            "name": "Cardano"
+        },
+        {
+            "ticker": "X:AEUSD",
+            "name": "Aeternity"
+        },
+        {
+            "ticker": "X:AIDUSD",
+            "name": "AidCoin"
+        },
+        {
+            "ticker": "X:AIOUSD",
+            "name": "All In One Coins"
+        },
+        {
+            "ticker": "X:ALBTUSD",
+            "name": "AllianceBlock"
+        },
+        {
+            "ticker": "X:ALCXUSD",
+            "name": "Alchemix"
+        },
+        {
+            "ticker": "X:ALGOUSD",
+            "name": "Algorand"
+        },
+        {
+            "ticker": "X:AMMUSD",
+            "name": "MicroMoney"
+        },
+        {
+            "ticker": "X:AMPUSD",
+            "name": "Amp"
+        },
+        {
+            "ticker": "X:ANKRUSD",
+            "name": "Ankr"
+        },
+        {
+            "ticker": "X:ANTUSD",
+            "name": "Aragon"
+        },
+        {
+            "ticker": "X:APEUSD",
+            "name": "ApeCoin"
+        },
+        {
+            "ticker": "X:API3USD",
+            "name": "API3"
+        },
+        {
+            "ticker": "X:ARDRUSD",
+            "name": "Ardor"
+        },
+        {
+            "ticker": "X:ARPAUSD",
+            "name": "ARPA Chain"
+        },
+        {
+            "ticker": "X:ASMUSD",
+            "name": "Assemble Protocol"
+        },
+        {
+            "ticker": "X:ATMUSD",
+            "name": "Bitcoin ATM"
+        },
+        {
+            "ticker": "X:ATOMUSD",
+            "name": "Cosmos"
+        },
+        {
+            "ticker": "X:AUCTIONUSD",
+            "name": "Bounce Token"
+        },
+        {
+            "ticker": "X:AUCUSD",
+            "name": "Auctus"
+        },
+        {
+            "ticker": "X:AVAXUSD",
+            "name": "Avalanche"
+        },
+        {
+            "ticker": "X:AVTUSD",
+            "name": "Aventus"
+        },
+        {
+            "ticker": "X:AXSUSD",
+            "name": "Axie Infinity"
+        },
+        {
+            "ticker": "X:B2XUSD",
+            "name": "SegWit2x"
+        },
+        {
+            "ticker": "X:BABUSD",
+            "name": "Babel"
+        },
+        {
+            "ticker": "X:BADGERUSD",
+            "name": "Badger Dao"
+        },
+        {
+            "ticker": "X:BALUSD",
+            "name": "Balancer"
+        },
+        {
+            "ticker": "X:BANCAUSD",
+            "name": "Banca"
+        },
+        {
+            "ticker": "X:BANDUSD",
+            "name": "Band Protocol"
+        },
+        {
+            "ticker": "X:BATUSD",
+            "name": "Basic Attention Token"
+        },
+        {
+            "ticker": "X:BBNUSD",
+            "name": "Banyan Network"
+        },
+        {
+            "ticker": "X:BCDUSD",
+            "name": "Bitcoin Diamond"
+        },
+        {
+            "ticker": "X:BCHABCUSD",
+            "name": "Bitcoin Cash ABC"
+        },
+        {
+            "ticker": "X:BCHCZK",
+            "name": "Bitcoin Cash - Czech Koruna"
+        },
+        {
+            "ticker": "X:BCHEUR",
+            "name": "Bitcoin Cash - Euro"
+        },
+        {
+            "ticker": "X:BCHGBP",
+            "name": "Bitcoin Cash - Great Britian Pound"
+        },
+        {
+            "ticker": "X:BCHSVUSD",
+            "name": "Bitcoin SV"
+        },
+        {
+            "ticker": "X:BCHUSD",
+            "name": "Bitcoin Cash"
+        },
+        {
+            "ticker": "X:BCIUSD",
+            "name": "Bitcoin Interest"
+        },
+        {
+            "ticker": "X:BCNUSD",
+            "name": "Bytecoin"
+        },
+        {
+            "ticker": "X:BERRYUSD",
+            "name": "Rentberr"
+        },
+        {
+            "ticker": "X:BFTUSD",
+            "name": "BnkToTheFuture"
+        },
+        {
+            "ticker": "X:BITSUSD",
+            "name": "Bitstar"
+        },
+        {
+            "ticker": "X:BIXUSD",
+            "name": "Bibox Token"
+        },
+        {
+            "ticker": "X:BMCUSD",
+            "name": "Blackmoon"
+        }
+    ]
+
