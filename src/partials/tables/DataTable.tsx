@@ -115,7 +115,7 @@ export const DataTable = ({ dataSet, handler }: DataProps) => {
                         </table>
                     </div>
 
-                    <div className="text-white mt-6">
+                    <div className="text-white my-8">
                         <div className='flex justify-between items-center'>
                             <h1 className="text-2xl"> Your tickers</h1>
                             <button
