@@ -9,7 +9,7 @@ export const GenerateResults = ({data} : DataProps) => {
         <div>
             {data.length === 0 ? null
                 :
-            <div>
+            <div className="md:grid grid-cols-2 gap-4">
                 {data.map((ele, index : number) => {
                     return (
                         <div key={index}>

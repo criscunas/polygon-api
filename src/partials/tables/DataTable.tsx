@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 var _ = require('lodash')
 
 type DataProps = {
-    dataSet: {
+    stockData: {
         ticker: string,
         name: string,
         sector: string,
     }[],
 
-    crypto: {
+    cryptoData: {
         ticker: string,
         name: string,
     }[],
@@ -18,11 +18,11 @@ type DataProps = {
     handler: Function,
 }
 
-export const DataTable = ({ dataSet, crypto, type, handler }: DataProps) => {
+export const DataTable = ({ stockData, cryptoData, type, handler }: DataProps) => {
 
     const [search, setSearch] = useState<string>('')
     const [data, setData] = useState<any[]>([])
-    const [cryptoData, setCryptoData] = useState<any[]>([])
+    const [cryptoDataData, setCryptoDataData] = useState<any[]>([])
     const [selected, setSelected] = useState<any>([])
 
     const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -53,20 +53,20 @@ export const DataTable = ({ dataSet, crypto, type, handler }: DataProps) => {
 
     useEffect(() => {
         if (!search) {
-            setData(dataSet)
-            setCryptoData(crypto)
+            setData(stockData)
+            setCryptoDataData(cryptoData)
         }
 
         if (search && type === 'stocks') {
-            setData(_.filter(dataSet, (item: any) => {
+            setData(_.filter(stockData, (item: any) => {
                 return item.name.toLowerCase().includes(search.toLowerCase().trim())
                     || item.ticker.toLowerCase().includes(search.toLowerCase().trim())
                     || item.sector.toLowerCase().includes(search.toLowerCase().trim())
             }))
         }
 
-        if (search && type === 'crypto') {
-            setCryptoData(_.filter(crypto, (item: any) => {
+        if (search && type === 'cryptoData') {
+            setCryptoDataData(_.filter(cryptoData, (item: any) => {
                 return item.name.toLowerCase().includes(search.toLowerCase().trim())
             }))
         }
@@ -140,7 +140,7 @@ export const DataTable = ({ dataSet, crypto, type, handler }: DataProps) => {
                 </div>
                 :
                 <div>
-                    {!cryptoData ?
+                    {!cryptoDataData ?
                         <div className="text-center mt-24">
                             <progress className="bg-blue-400 progress w-56"></progress>
                         </div>
@@ -167,7 +167,7 @@ export const DataTable = ({ dataSet, crypto, type, handler }: DataProps) => {
                                         </tr>
                                     </thead>
                                     <tbody className="bg-white text-sm divide-y divide-slate-200 border-b border-slate-200 max-h-20">
-                                        {cryptoData.map((ele: { ticker: string, name: string }, index: number) => {
+                                        {cryptoDataData.map((ele: { ticker: string, name: string }, index: number) => {
                                             return (
                                                 <tr key={index} className="cursor-pointer hover:bg-slate-300">
                                                     <td className="pl-4 py-2">
@@ -189,7 +189,7 @@ export const DataTable = ({ dataSet, crypto, type, handler }: DataProps) => {
                                         })}
                                     </tbody>
                                 </table>
-                                {cryptoData.length === 0 ?
+                                {cryptoDataData.length === 0 ?
                                     <div className='bg-white text-center py-4 text-lg font-semibold'>
                                         <p> No matches found for {search} </p>
                                     </div>

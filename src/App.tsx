@@ -1,12 +1,10 @@
 import configs from '../src/service/configs';
-import Data from './data/sp500.json';
-import Crypto from './data/crypto.json';
+import stocks from './data/sp500.json';
+import crypto from './data/crypto.json';
 import { useState } from 'react';
 import { HeroSection } from './components/HeroSection';
 import { DataTable } from './partials/tables/DataTable';
 import { GenerateResults } from './components/GenerateResults';
-var _ = require('lodash')
-
 
 function App() {
 
@@ -28,12 +26,12 @@ function App() {
     return (
         <div>
             <div className='text-white flex gap-8 text-2xl'>
-                <p className='cursor-pointer'
+                <p className='cursor-pointer hover:border-b-4 border-blue-400'
                     onClick={() => setType('stocks')}
                 >
                     Stocks
                 </p>
-                <p className='cursor-pointer'
+                <p className='cursor-pointer hover:border-b-4 border-blue-400'
                     onClick={() => setType('crypto')}
                 >
                     Crypto
@@ -42,8 +40,8 @@ function App() {
             <HeroSection />
             <DataTable
                 type={type}
-                crypto={Crypto}
-                dataSet={Data}
+                cryptoData={crypto}
+                stockData={stocks}
                 handler={generateResults}
             />
             <GenerateResults data = {searchResults} />
