@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 var _ = require('lodash')
 
 type DataProps = {
-    stockData: {
+    dataStocks: {
         ticker: string,
         name: string,
         sector: string,
     }[],
 
-    cryptoData: {
+    dataCrypto: {
         ticker: string,
         name: string,
     }[],
@@ -18,11 +18,11 @@ type DataProps = {
     handler: Function,
 }
 
-export const DataTable = ({ stockData, cryptoData, type, handler }: DataProps) => {
+export const DataTable = ({ dataStocks, dataCrypto, type, handler }: DataProps) => {
 
     const [search, setSearch] = useState<string>('')
     const [data, setData] = useState<any[]>([])
-    const [cryptoDataData, setCryptoDataData] = useState<any[]>([])
+    const [cryptoData, setCryptoData] = useState<any[]>([])
     const [selected, setSelected] = useState<any>([])
 
     const onChange = (e: React.FormEvent<HTMLInputElement>): void => {
@@ -53,150 +53,105 @@ export const DataTable = ({ stockData, cryptoData, type, handler }: DataProps) =
 
     useEffect(() => {
         if (!search) {
-            setData(stockData)
-            setCryptoDataData(cryptoData)
+            setData(dataStocks)
+            setCryptoData(dataCrypto)
         }
 
         if (search && type === 'stocks') {
-            setData(_.filter(stockData, (item: any) => {
+            setData(_.filter(dataStocks, (item: any) => {
                 return item.name.toLowerCase().includes(search.toLowerCase().trim())
                     || item.ticker.toLowerCase().includes(search.toLowerCase().trim())
                     || item.sector.toLowerCase().includes(search.toLowerCase().trim())
             }))
         }
 
-        if (search && type === 'cryptoData') {
-            setCryptoDataData(_.filter(cryptoData, (item: any) => {
+        if (search && type === 'crypto') {
+            setCryptoData(_.filter(dataCrypto, (item: any) => {
                 return item.name.toLowerCase().includes(search.toLowerCase().trim())
             }))
         }
     }, [search])
 
     return (
-        <div>
+        <div className='mt-4'>
             {type === 'stocks' ?
-                <div>
-                    {!data ?
-                        <div className="text-center mt-24">
-                            <progress className="bg-blue-400 progress w-56"></progress>
-                        </div>
-                        :
-                        <div>
-                            <div className="bg-white flex items-center justify-between py-2 px-4">
-                                <div className='font-semibold'>S&P 500</div>
-                                <form>
-                                    <input
-                                        type="text"
-                                        placeholder="Search"
-                                        className="border-2 border-slate-300 input-sm max-w-[15rem] rounded"
-                                        onChange={onChange}
-                                        value={search}
-                                    />
-                                </form>
-                            </div>
-                            <div className="overflow-x-auto max-h-80 rounded-b-sm">
-                                <table className="table-auto w-full">
-                                    <thead className="text-sm uppercase text-slate-600 bg-slate-50">
-                                        <tr>
-                                            <th className="pl-4 text-left border-b border-t py-1">Ticker</th>
-                                            <th className="pl-4 text-left border-b border-t py-1">Name</th>
-                                            <th className="pl-4 text-left border-b border-t py-1">Sector</th>
+                <div className='w-96 m-auto'>
+                    <div className='flex items-center'>
+                        <input
+                            type='text'
+                            className='pl-2 rounded-sm h-8 w-full border-2 border-slate-300'
+                            placeholder='Search stock ticker...'
+                            onChange={onChange}
+                            value={search}
+                        />
+                    </div>
+
+                    <div className='mt-2.5 overflow-x-auto max-h-80 rounded'>
+                        <table className="table-auto w-full">
+                            <tbody className="bg-white text-sm divide-y divide-slate-200 border-b border-slate-200">
+                                {data.map((ele: { ticker: string, name: string}, index: number) => {
+                                    return (
+                                        <tr key={index} className="cursor-pointer hover:bg-slate-300">
+                                            <td className="pl-4 py-2">
+                                                <div className='flex items-center gap-4'>
+                                                    <input
+                                                        type="checkbox"
+                                                        onChange={onSelectChange}
+                                                        value={index}
+                                                        name={ele.ticker.toString()}
+                                                    />
+                                                    {ele.ticker}
+                                                </div>
+                                            </td>
+                                            <td className="pl-4">
+                                                <div> {ele.name} </div>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody className="bg-white text-sm divide-y divide-slate-200 border-b border-slate-200 max-h-20">
-                                        {data.map((ele: { ticker: string, name: string, sector: string }, index: number) => {
-                                            return (
-                                                <tr key={index} className="cursor-pointer hover:bg-slate-300">
-                                                    <td className="pl-4">
-                                                        <div className='flex items-center gap-4'>
-                                                            <input
-                                                                type="checkbox"
-                                                                onChange={onSelectChange}
-                                                                value={index}
-                                                                name={ele.ticker.toString()}
-                                                            />
-                                                            {ele.ticker}
-                                                        </div>
-                                                    </td>
-                                                    <td className="pl-4">
-                                                        <div> {ele.name} </div>
-                                                    </td>
-                                                    <td className="p-2 ">
-                                                        <div> {ele.sector} </div>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })}
-                                    </tbody>
-                                </table>
-                                {data.length === 0 ?
-                                    <div className='bg-white text-center py-4 text-lg font-semibold'>
-                                        <p> No matches found for {search}</p>
-                                    </div>
-                                    : null}
-                            </div>
-                        </div>
-                    }
+                                    )
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
                 :
-                <div>
-                    {!cryptoDataData ?
-                        <div className="text-center mt-24">
-                            <progress className="bg-blue-400 progress w-56"></progress>
-                        </div>
-                        :
-                        <div>
-                            <div className="bg-white flex items-center justify-between py-2 px-4">
-                                <div className='font-semibold'>Crypto</div>
-                                <form>
-                                    <input
-                                        type="text"
-                                        placeholder="Search"
-                                        className="border-2 border-slate-300 input-sm max-w-[15rem] rounded"
-                                        onChange={onChange}
-                                        value={search}
-                                    />
-                                </form>
-                            </div>
-                            <div className="overflow-x-auto max-h-80 rounded-b-sm">
-                                <table className="table-fixed w-full">
-                                    <thead className="text-sm uppercase text-slate-600 bg-slate-50">
-                                        <tr>
-                                            <th className="pl-4 text-left border-b border-t py-1">Symbol</th>
-                                            <th className="pl-4 text-left border-b border-t py-1">Name</th>
+                <div className='w-96 m-auto'>
+                    <div className='flex items-center'>
+                        <input
+                            type='text'
+                            className='pl-2 rounded-sm h-8 w-full border-2 border-slate-300'
+                            placeholder='Search crypto ticker...'
+                            onChange={onChange}
+                            value={search}
+                        />
+                    </div>
+
+                    <div className='mt-2.5 overflow-x-auto max-h-80 rounded'>
+                        <table className="table-auto w-full">
+                            <tbody className="bg-white text-sm divide-y divide-slate-200 border-b border-slate-200">
+                                {cryptoData.map((ele: { ticker: string, name: string }, index: number) => {
+                                    return (
+                                        <tr key={index} className="cursor-pointer hover:bg-slate-300">
+                                            <td className="pl-4 py-2">
+                                                <div className='flex items-center gap-4'>
+                                                    <input
+                                                        type="checkbox"
+                                                        onChange={onSelectChange}
+                                                        value={index}
+                                                        name={ele.ticker.toString()}
+                                                    />
+                                                    {ele.ticker}
+                                                </div>
+                                            </td>
+                                            <td className="pl-4">
+                                                <div> {ele.name} </div>
+                                            </td>
                                         </tr>
-                                    </thead>
-                                    <tbody className="bg-white text-sm divide-y divide-slate-200 border-b border-slate-200 max-h-20">
-                                        {cryptoDataData.map((ele: { ticker: string, name: string }, index: number) => {
-                                            return (
-                                                <tr key={index} className="cursor-pointer hover:bg-slate-300">
-                                                    <td className="pl-4 py-2">
-                                                        <div className='flex items-center gap-4'>
-                                                            <input
-                                                                type="checkbox"
-                                                                onChange={onSelectChange}
-                                                                value={index}
-                                                                name={ele.ticker.toString()}
-                                                            />
-                                                            {ele.ticker}
-                                                        </div>
-                                                    </td>
-                                                    <td className="pl-4">
-                                                        <div> {ele.name} </div>
-                                                    </td>
-                                                </tr>
-                                            )
-                                        })}
-                                    </tbody>
-                                </table>
-                                {cryptoDataData.length === 0 ?
-                                    <div className='bg-white text-center py-4 text-lg font-semibold'>
-                                        <p> No matches found for {search} </p>
-                                    </div>
-                                    : null}
-                            </div>
-                        </div>
-                    }
+                                    )
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             }
 

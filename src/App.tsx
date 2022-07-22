@@ -39,8 +39,8 @@ function App() {
             />
             <DataTable
                 type={options.name}
-                cryptoData={crypto}
-                stockData={stocks}
+                dataCrypto={crypto}
+                dataStocks={stocks}
                 handler={generateResults}
             />
             <GenerateResults data = {searchResults} />
